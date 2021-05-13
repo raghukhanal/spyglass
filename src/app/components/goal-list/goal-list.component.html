@@ -1,1 +1,46 @@
-<p>goal-list works!</p>
+
+<div class="list row">
+    
+    <div class="col-md-6">
+      <h4>Goals List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let goal of goals; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveGoal(goal, i)"
+        >
+          {{ goal.name }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllGoals()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentGoal">
+        <h4>Goal</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentGoal.name }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentGoal.description }}
+        </div>
+        <div>
+            <label><strong>Percent progress:</strong></label>
+            {{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }} %
+          </div>
+  
+        <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentGoal">
+        <br />
+        <p>Please click on a Goal...</p>
+      </div>
+    </div>
+  </div>
