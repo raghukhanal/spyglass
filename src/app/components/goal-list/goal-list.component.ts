@@ -12,6 +12,13 @@ export class GoalListComponent implements OnInit {
   currentGoal = null;
   currentIndex = -1;
   name = '';
+
+  //for getting recommended amount to be funded per month
+  targetAmount: number;
+  targetDate: Date;
+  currentAmount: number;
+  todaysDate: Date = new Date();
+
   //Need a method to calculate percent of goal acheived 
   percentage = 0;
 
@@ -34,6 +41,35 @@ export class GoalListComponent implements OnInit {
         });
   }
 
+
+
+// ******************************* TO DO: ****************************************** //
+  monthlyRecommendedAmount(id) {
+    let theGoal =  this.goalService.get(id)
+    .subscribe(
+      data => {
+        this.currentGoal = data;
+        this.targetAmount = data.targetAmount;
+        this.targetDate = data.targetDate;
+        // this.todaysDate
+        this.currentAmount = data.currentAmount;
+        // let months = Math.floor((Date.now() - this.targetDate) / 30 / 24 / 3600 / 1000);
+
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+    // targetAmount  
+
+    //targetDate 
+    //Today's date 
+    // extract # of months left
+  }
+
+  // ********************************************************************************************** //
+
+  
   refreshList() {
     this.retrieveGoals();
     this.currentGoal = null;
