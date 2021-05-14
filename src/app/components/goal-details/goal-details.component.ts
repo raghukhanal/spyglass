@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from 'src/app/services/goal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Goal } from 'src/models/goal.model';
+import { Goal } from 'src/app/models/goal.model';
 
 @Component({
   selector: 'app-goal-details',

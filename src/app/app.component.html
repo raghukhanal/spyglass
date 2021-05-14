@@ -1,24 +1,20 @@
 <div>
-  <h1>Goal Planner</h1>
+  <!-- <h1>Goal Planner</h1> -->
   <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Dig your Goals!</a>
     <div class="navbar-nav mr-auto">
       <li class="nav-item">
         <a routerLink="goals" class="nav-link">Goals</a>
       </li>
       <li class="nav-item">
-        <a routerLink="add" class="nav-link">Add</a>
+        <a routerLink="add" class="nav-link">New Goal</a>
       </li>
     </div>
   </nav>
 
-  <!-- List of goals -->
-      <!-- ng for
-  <table>
-    <tr>
-      <th>
-        
-      </th>
-    </tr>
-  </table> -->
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+
+
 </div>
-<router-outlet></router-outlet>

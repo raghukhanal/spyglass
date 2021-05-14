@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Goal } from '../models/goal.model';
 
 
 //idk if we need this yet, 8080 is where our server is gonna connect
-const baseUrl = 'http://localhost:8080/api/goals';
+const baseUrl = 'http://localhost:9080/api/goals';
 
 @Injectable({
   providedIn: 'root'
@@ -16,22 +18,27 @@ export class GoalService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.http.get(baseUrl);
+  getAll(): Observable<Goal[]> {
+    return this.http.get<Goal[]>(baseUrl);
   }
-  get(id) {
-    return this.http.get('${baseUrl}/${id}');
+  
+  get(id: any): Observable<Goal> {
+    return this.http.get(`${baseUrl}/${id}`);
   }
-  create(data) {
+
+  create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
   }
-  update(id, data) {
-    return this.http.put('${baseUrl}/${id}', data);
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
   }
-  delete(id) {
-    return this.http.delete('${baseUrl}/${id}');
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
   }
-  deleteAll() {
+
+  deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
 }

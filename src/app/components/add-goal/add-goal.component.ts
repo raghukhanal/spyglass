@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Goal } from 'src/app/models/goal.model';
 import { GoalService } from 'src/app/services/goal.service';
-import { Goal } from 'src/models/goal.model';
 
 @Component({
   selector: 'app-add-goal',
@@ -23,7 +23,7 @@ export class AddGoalComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveGoal() {
+  saveGoal(): void {
     const data = {
       name: this.goal.name,
       description: this.goal.description,
@@ -42,7 +42,7 @@ export class AddGoalComponent implements OnInit {
       });
   }
 
-  newGoal() {
+  newGoal(): void {
     this.submitted = false;
 //TODO: if you make the model file, update the data types here (targetAmount is a numeric value or a string?)
     this.goal = {
