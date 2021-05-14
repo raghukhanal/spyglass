@@ -11,8 +11,7 @@
           (click)="setActiveGoal(goal, i)"
         >
           {{ goal.name }},
-          {{goal.targetDate}},
-          [{{ goal.currentAmount / goal.targetAmount * 100 }}% complete]
+          {{ goal.currentAmount / goal.targetAmount * 100 }}% complete
         </li>
       </ul>
   
@@ -22,7 +21,7 @@
     </div>
     <div class="col-md-6">
       <div *ngIf="currentGoal">
-        <h4>Goal</h4>
+        <h4>Details</h4>
         <div>
           <label><strong>Name:</strong></label> {{ currentGoal.name }}
         </div>
@@ -35,18 +34,36 @@
           {{ currentGoal.targetDate }}
         </div>
         <div>
+          <label><strong>Cost:</strong></label>
+          {{ currentGoal.targetAmount }}
+        </div>
+        <div>
+          <label><strong>Money Saved:</strong></label>
+          {{ currentGoal.currentAmount }}
+        </div>
+        <div>
+          <label><strong>Recommended Monthly Amount:</strong></label>
+          Functionality to be added
+        </div>
+        <div>
             <label><strong>Percent progress:</strong></label>
-            {{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }} %
+            {{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }}%
           </div>
-  
+          <!--
         <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
           Edit
         </a>
+      -->
+        <button class="m-3 btn btn-sm btn-secondary" >
+          <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
+            Make Payment / Edit Goal
+          </a>
+        </button>
       </div>
   
       <div *ngIf="!currentGoal">
         <br />
-        <p>Please click on a Goal...</p>
+        <p>Please click on a goal...</p>
       </div>
     </div>
   </div>

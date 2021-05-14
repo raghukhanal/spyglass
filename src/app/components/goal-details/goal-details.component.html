@@ -1,5 +1,5 @@
 <div *ngIf="currentGoal" class="edit-form">
-    <h4>Goal</h4>
+    <h4>Goal Details</h4>
     <form>
       <div class="form-group">
         <label for="name">Name</label>
@@ -25,14 +25,26 @@
     </form>
   
 
-  
-    <button class="badge badge-danger mr-2" (click)="deleteGoal()">
-      Delete
+    <!-- <button class="m-3 btn btn-sm btn-secondary" >
+      <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
+        Make Payment / Edit Goal
+      </a>
     </button>
-  
-    <button type="submit" class="badge badge-success" (click)="updateGoal()">
-      Update
-    </button>
+    <button class="m-3 btn btn-sm btn-secondary" >
+      <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
+        Make Payment / Edit Goal
+      </a>
+    </button> -->
+    
+  <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
+      Update/Make Payment
+  </button>
+
+  <button class="m-3 btn btn-sm btn-danger" (click)="deleteGoal()">
+    Delete
+  </button>
+
+
     <p>{{ message }}</p>
   </div>
   
