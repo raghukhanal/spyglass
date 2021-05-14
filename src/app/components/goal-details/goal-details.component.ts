@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from 'src/app/services/goal.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Goal } from 'src/models/goal.model';
 
 @Component({
   selector: 'app-goal-details',
@@ -9,7 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class GoalDetailsComponent implements OnInit {
 
-  currentGoal = null;
+  currentGoal: Goal = {
+    name: '',
+    description: '',
+    targetAmount: 0,
+    targetDate: null,
+    currentAmount: 0
+  };
   message = '';
 
   constructor(
@@ -21,7 +28,7 @@ export class GoalDetailsComponent implements OnInit {
  
   ngOnInit() {
     this.message = '';
-    this.getGoal(this.route.snapshot.paramMap.get('id'));
+    this.getGoal(this.route.snapshot.params.id);
   }
 
   getGoal(id) {
@@ -36,23 +43,6 @@ export class GoalDetailsComponent implements OnInit {
         });
   }
 
-  updatePublished(status) {
-    const data = {
-      title: this.currentGoal.title,
-      description: this.currentGoal.description,
-      published: status
-    };
-
-    this.goalService.update(this.currentGoal.id, data)
-      .subscribe(
-        response => {
-          this.currentGoal.published = status;
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
-  }
 
   updateGoal() {
     this.goalService.update(this.currentGoal.id, this.currentGoal)

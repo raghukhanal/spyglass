@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from 'src/app/services/goal.service';
+import { Goal } from 'src/models/goal.model';
 
 @Component({
   selector: 'app-add-goal',
@@ -8,13 +9,13 @@ import { GoalService } from 'src/app/services/goal.service';
 })
 export class AddGoalComponent implements OnInit {
 //TODO: make a model file for goals
-  goal = {
+  goal: Goal = {
     name: '',
     description: '',
-    targetAmount: '',
-    targetDate: '',
-    currentAmount: ''
-  }
+    targetAmount: 0.0,
+    targetDate: null,
+    currentAmount: 0.0
+  };
   submitted = false;
 
   constructor(private goalService: GoalService) { }
@@ -47,9 +48,9 @@ export class AddGoalComponent implements OnInit {
     this.goal = {
       name: '',
       description: '',
-      targetAmount: '',
-      targetDate: '',
-      currentAmount: ''
+      targetAmount: 0,
+      targetDate: null,
+      currentAmount: 0
     }
   }
 }

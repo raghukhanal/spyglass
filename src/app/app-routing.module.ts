@@ -5,9 +5,9 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
 import { AddGoalComponent } from './components/add-goal/add-goal.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'goal', pathMatch: 'full' },
-  { path: 'goal', component: GoalListComponent},
-  { path: 'goal/:id', component: GoalDetailsComponent},
+  { path: '', redirectTo: 'goals', pathMatch: 'full' },
+  { path: 'goals', component: GoalListComponent},
+  { path: 'goals/:id', component: GoalDetailsComponent},
   { path: 'add', component: AddGoalComponent}
 ];
 
