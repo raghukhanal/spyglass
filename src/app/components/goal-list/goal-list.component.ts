@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from 'src/app/services/goal.service';
+import { GoalDetailsComponent } from '../goal-details/goal-details.component';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class GoalListComponent implements OnInit {
   currentGoal = null;
   currentIndex = -1;
   name = '';
+ 
 
   //for getting recommended amount to be funded per month
   targetAmount: number;
@@ -54,6 +56,8 @@ export class GoalListComponent implements OnInit {
         // this.todaysDate
         this.currentAmount = data.currentAmount;
         // let months = Math.floor((Date.now() - this.targetDate) / 30 / 24 / 3600 / 1000);
+     
+        // let months = this.targetDate - Date.now();
 
         console.log(data);
       },
@@ -69,7 +73,7 @@ export class GoalListComponent implements OnInit {
 
   // ********************************************************************************************** //
 
-  
+
   refreshList() {
     this.retrieveGoals();
     this.currentGoal = null;

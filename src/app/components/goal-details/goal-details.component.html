@@ -21,7 +21,7 @@
           name="description"
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="description">Description</label>
         <input
           type="text"
@@ -30,9 +30,9 @@
           [(ngModel)]="currentGoal.description"
           name="description"
         />
-      </div>
+      </div> -->
       <div class="form-group">
-        <label for="targetAmount">Total Cost:</label>
+        <label for="targetAmount">Total Cost: $</label>
         <input
           type="text"
           class="form-control"
@@ -41,18 +41,37 @@
           name="targetAmount"
         />
       </div>
+      <!-- ********************************** -->
       <div class="form-group">
-        <label for="targetDate">Due by:</label>
+        <label for="targetDate1">Due by:  </label>
         <input
           type="text"
           class="form-control"
           id="targetDate"
           [(ngModel)]="currentGoal.targetDate"
           name="targetDate"
-        />
+        /> 
+        <!-- <mat-datepicker></mat-datepicker>
+
+
+
+        <!-- <mat-form-field class="example-full-width">
+          <input matInput  id="targetDate" name="targetDate" [(ngModel)]="currentGoal.targetDate" [matDatepicker]="picker" placeholder="">
+
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->
+
+
+
+
+
+        <!-- **************************************************************** -->
       </div>
       <div class="form-group">
-        <label for="currentAmount">$ Saved:</label>
+        <label for="currentAmount">Money Saved: </label>
         <input
           type="text"
           class="form-control"
@@ -61,7 +80,11 @@
           name="currentAmount"
         />
       </div>
-  
+      <div class="form-group">
+        <label for="totalMonthsLeft">Recommended Monthly Payment: </label>
+        <p >${{recommendedAmountPerMonth}}</p> 
+      </div>
+   
     </form>
     
   <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
@@ -73,7 +96,7 @@
   </button>
 
 
-    <p>{{ message }}</p>
+    <p style="color: red;">{{ message }}</p>
   </div>
   
   <div *ngIf="!currentGoal">

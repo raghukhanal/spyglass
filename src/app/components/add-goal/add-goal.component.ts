@@ -12,9 +12,9 @@ export class AddGoalComponent implements OnInit {
   goal: Goal = {
     name: '',
     description: '',
-    targetAmount: 0.0,
+    targetAmount: null,
     targetDate: null,
-    currentAmount: 0.0
+    currentAmount: null
   };
   submitted = false;
 
