@@ -2,3 +2,10 @@
     max-width: 400px;
     margin: auto;
   }
+  div {
+    padding: 10px;
+  }
+
+  #submitButton{
+    margin-left:"10px;"
+  }

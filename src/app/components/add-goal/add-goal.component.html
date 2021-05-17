@@ -29,14 +29,17 @@
           class="form-control"
           id="targetAmount"
           required
+          value=""
           [(ngModel)]="goal.targetAmount"
           name="targetAmount"
         />
       </div>
+
+      <!-- We are here -->
       <div class="form-group">
         <label for="targetDate">Target Date</label>
         <input
-          type="text"
+          type="date"
           class="form-control"
           id="targetDate"
           required
@@ -55,8 +58,8 @@
           name="currentAmount"
         />
       </div>
-  
-      <button (click)="saveGoal()" class="btn btn-success">Submit</button>
+      <br>
+      <button id="submitButton" (click)="saveGoal()" class="btn btn-success">Submit</button>
     </div>
   
     <div *ngIf="submitted">

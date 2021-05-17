@@ -54,6 +54,8 @@ export class GoalListComponent implements OnInit {
         // this.todaysDate
         this.currentAmount = data.currentAmount;
         // let months = Math.floor((Date.now() - this.targetDate) / 30 / 24 / 3600 / 1000);
+     
+        // let months = this.targetDate - Date.now();
 
         console.log(data);
       },
@@ -69,7 +71,7 @@ export class GoalListComponent implements OnInit {
 
   // ********************************************************************************************** //
 
-  
+
   refreshList() {
     this.retrieveGoals();
     this.currentGoal = null;
