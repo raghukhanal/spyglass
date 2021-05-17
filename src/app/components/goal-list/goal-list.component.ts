@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from 'src/app/services/goal.service';
+import { GoalDetailsComponent } from '../goal-details/goal-details.component';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class GoalListComponent implements OnInit {
   currentGoal = null;
   currentIndex = -1;
   name = '';
+ 
 
   //for getting recommended amount to be funded per month
   targetAmount: number;

@@ -3,8 +3,8 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Goal } from '../models/goal.model';
 
-//connects to 9080 on the backend
-const baseUrl = 'http://localhost:9080/api/goals';
+//connects to 9081 on the backend
+const baseUrl = 'http://localhost:9081/api/goals';
 
 @Injectable({
   providedIn: 'root'

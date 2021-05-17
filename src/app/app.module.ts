@@ -9,6 +9,7 @@ import { AddGoalComponent } from './components/add-goal/add-goal.component';
 import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 import { GoalListComponent } from './components/goal-list/goal-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

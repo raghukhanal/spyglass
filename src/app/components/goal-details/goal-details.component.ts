@@ -14,7 +14,7 @@ export class GoalDetailsComponent implements OnInit {
     name: '',
     description: '',
     targetAmount: 0,
-    targetDate: null,
+    targetDate: new Date(),
     currentAmount: 0
   };
   message = '';
@@ -59,7 +59,17 @@ export class GoalDetailsComponent implements OnInit {
           var monthsLeft = target.getMonth() - now.getMonth();
           this.totalMonthsLeft = monthsLeft + yearsLeftWithMonth;
           console.log("Months left: "+ this.totalMonthsLeft);
-          this.recommendedAmountPerMonth = (data.targetAmount - data.currentAmount)/this.totalMonthsLeft;
+          
+          if(this.totalMonthsLeft == 0) {
+            this.recommendedAmountPerMonth = data.targetAmount - data.currentAmount;
+          } else if(this.totalMonthsLeft < 0) {
+            this.recommendedAmountPerMonth = 0;
+            this.message="Past due date";
+          } else {
+            this.recommendedAmountPerMonth = (data.targetAmount - data.currentAmount)/this.totalMonthsLeft;
+          }
+         
+
           console.log("$$$$: "+ this.recommendedAmountPerMonth);
         },
         error => {
