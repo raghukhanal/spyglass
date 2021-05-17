@@ -82,7 +82,7 @@
       </div>
       <div class="form-group">
         <label for="recommendedAmountPerMonth">Recommended Monthly Payment: </label>
-        <p >${{recommendedAmountPerMonth}}</p> 
+        <p >${{recommendedAmountPerMonth.toFixed(2)}}</p> 
       </div>
    
     </form>
@@ -102,4 +102,3 @@
   <div *ngIf="!currentGoal">
     <br />    <p>Cannot access this goal...</p>
   </div>
-i

@@ -17,6 +17,7 @@ export class GoalListComponent implements OnInit {
   totalMonthsLeft = 0;
   recommendedAmountPerMonth = 0;
   message = '';
+  percentComplete = 0;
  
  
 
@@ -111,6 +112,7 @@ recommendedMonthlyPayment(id) {
     this.currentGoal = goal;
     this.currentIndex = index;
     this.recommendedMonthlyPayment(goal.id);
+    this.percentComplete = goal.currentAmount / goal.targetAmount * 100;
   }
 
   removeAllGoals() {

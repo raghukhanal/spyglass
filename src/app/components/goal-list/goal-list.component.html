@@ -11,7 +11,8 @@
           (click)="setActiveGoal(goal, i)"
         >
           {{ goal.name }},
-          {{ goal.currentAmount / goal.targetAmount * 100 }}% complete
+          {{ percentComplete.toFixed(1) }}% complete
+          <!-- {{ goal.currentAmount / goal.targetAmount * 100 }} % complete -->
         </li>
       </ul>
   
@@ -48,7 +49,7 @@
 
 
           <label for="recommendedAmountPerMonth">Recommended Monthly Payment: </label>
-          <p>${{recommendedAmountPerMonth}}</p> 
+          <p>${{recommendedAmountPerMonth.toFixed(2)}}</p> 
 
 
         </div>
