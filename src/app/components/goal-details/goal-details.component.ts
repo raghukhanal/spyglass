@@ -18,17 +18,20 @@ export class GoalDetailsComponent implements OnInit {
     currentAmount: 0
   };
   message = '';
-
+  totalMonthsLeft = 0;
+  recommendedAmountPerMonth = 0;
+  
   constructor(
     private goalService: GoalService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
- 
+
   ngOnInit() {
     this.message = '';
     this.getGoal(this.route.snapshot.params.id);
+    this.recommendedMonthlyPayment();
   }
 
   getGoal(id) {
@@ -43,19 +46,27 @@ export class GoalDetailsComponent implements OnInit {
         });
   }
 
-  recommendedMonthlyPayment(id) {
-    var goal = this.getGoal(id);
-    this.message = ("The goal is: " + goal);
-    console.log(this.message);
-    // var now = new Date();
-    // var target = new Date(goal.data.targetDate);
-    // var yearsLeftWithMonth = (target.getFullYear() - now.getFullYear()) * 12;
-    // var monthsLeft = target.getMonth() - now.getMonth();
-
-    // console.log("Months left: "+ (monthsLeft + yearsLeftWithMonth));
+  recommendedMonthlyPayment() {
+    //totalAmount - currentAmount / totalMonthsLeft
+    this.goalService.get(this.route.snapshot.params.id)
+      .subscribe(
+        data => {
+          this.currentGoal = data;
+          console.log(data);
+          var now = new Date();
+          var target = new Date(data.targetDate);
+          var yearsLeftWithMonth = (target.getFullYear() - now.getFullYear()) * 12;
+          var monthsLeft = target.getMonth() - now.getMonth();
+          this.totalMonthsLeft = monthsLeft + yearsLeftWithMonth;
+          console.log("Months left: "+ this.totalMonthsLeft);
+          this.recommendedAmountPerMonth = (data.targetAmount - data.currentAmount)/this.totalMonthsLeft;
+          console.log("$$$$: "+ this.recommendedAmountPerMonth);
+        },
+        error => {
+          console.log(error);
+        });
+  
   }
-
-
   updateGoal() {
     this.goalService.update(this.currentGoal.id, this.currentGoal)
       .subscribe(

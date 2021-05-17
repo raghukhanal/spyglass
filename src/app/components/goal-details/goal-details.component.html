@@ -44,7 +44,7 @@
       <div class="form-group">
         <label for="targetDate">Due by:</label>
         <input
-          type="text"
+          type="date"
           class="form-control"
           id="targetDate"
           [(ngModel)]="currentGoal.targetDate"
@@ -61,14 +61,15 @@
           name="currentAmount"
         />
       </div>
-  
+      <div class="form-group">
+        <label for="totalMonthsLeft">Recommended Monthly Payment: </label>
+        <p>${{recommendedAmountPerMonth}}</p> 
+      </div>
+   
     </form>
     
   <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
       Update/Make Payment
-  </button>
-  <button type="submit" (click) = recommendedMonthlyPayment()>
-    Show Recommended Months
   </button>
 
   <button class="m-3 btn btn-sm btn-danger" (click)="deleteGoal()">
