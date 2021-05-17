@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GoalService } from 'src/app/services/goal.service';
 import { GoalDetailsComponent } from '../goal-details/goal-details.component';
 
@@ -13,6 +14,10 @@ export class GoalListComponent implements OnInit {
   currentGoal = null;
   currentIndex = -1;
   name = '';
+  totalMonthsLeft = 0;
+  recommendedAmountPerMonth = 0;
+  message = '';
+ 
  
 
   //for getting recommended amount to be funded per month
@@ -25,10 +30,15 @@ export class GoalListComponent implements OnInit {
   percentage = 0;
 
 
-  constructor(private goalService: GoalService) {}
+  constructor(
+    private goalService: GoalService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.retrieveGoals();
+    //this.recommendedMonthlyPayment();
   }
 
   retrieveGoals() {
@@ -46,30 +56,47 @@ export class GoalListComponent implements OnInit {
 
 
 // ******************************* TO DO: ****************************************** //
-  monthlyRecommendedAmount(id) {
-    let theGoal =  this.goalService.get(id)
+recommendedMonthlyPayment(id) {
+  //totalAmount - currentAmount / totalMonthsLeft
+  this.goalService.get(id)
     .subscribe(
       data => {
         this.currentGoal = data;
-        this.targetAmount = data.targetAmount;
-        this.targetDate = data.targetDate;
-        // this.todaysDate
-        this.currentAmount = data.currentAmount;
-        // let months = Math.floor((Date.now() - this.targetDate) / 30 / 24 / 3600 / 1000);
-     
-        // let months = this.targetDate - Date.now();
-
         console.log(data);
+        var now = new Date();
+        var target = new Date(data.targetDate);
+        console.log("Target: " + target);
+        var yearsLeftWithMonth = (target.getFullYear() - now.getFullYear()) * 12;
+        var monthsLeft = target.getMonth() - now.getMonth();
+        this.totalMonthsLeft = monthsLeft + yearsLeftWithMonth;
+        console.log("Months left: "+ this.totalMonthsLeft);
+        
+        if(this.totalMonthsLeft == 0) {
+          this.recommendedAmountPerMonth = data.targetAmount - data.currentAmount;
+        } else if(this.totalMonthsLeft < 0) {
+          this.recommendedAmountPerMonth = 0;
+          this.message="Past due date";
+        } else {
+          this.recommendedAmountPerMonth = (data.targetAmount - data.currentAmount)/this.totalMonthsLeft;
+        }
+       
+
+        console.log("$$$$: "+ this.recommendedAmountPerMonth);
       },
       error => {
         console.log(error);
       });
+
+}
+
+
+    
     // targetAmount  
 
     //targetDate 
     //Today's date 
-    // extract # of months left
-  }
+    // extract# of months left
+  
 
   // ********************************************************************************************** //
 
@@ -83,6 +110,7 @@ export class GoalListComponent implements OnInit {
   setActiveGoal(goal, index) {
     this.currentGoal = goal;
     this.currentIndex = index;
+    this.recommendedMonthlyPayment(goal.id);
   }
 
   removeAllGoals() {
@@ -98,4 +126,5 @@ export class GoalListComponent implements OnInit {
     }
 
   }
+
 
