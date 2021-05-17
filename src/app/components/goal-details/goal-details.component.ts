@@ -43,6 +43,18 @@ export class GoalDetailsComponent implements OnInit {
         });
   }
 
+  recommendedMonthlyPayment(id) {
+    var goal = this.getGoal(id);
+    this.message = ("The goal is: " + goal);
+    console.log(this.message);
+    // var now = new Date();
+    // var target = new Date(goal.data.targetDate);
+    // var yearsLeftWithMonth = (target.getFullYear() - now.getFullYear()) * 12;
+    // var monthsLeft = target.getMonth() - now.getMonth();
+
+    // console.log("Months left: "+ (monthsLeft + yearsLeftWithMonth));
+  }
+
 
   updateGoal() {
     this.goalService.update(this.currentGoal.id, this.currentGoal)
