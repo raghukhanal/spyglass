@@ -11,8 +11,8 @@
           (click)="setActiveGoal(goal, i)"
         >
           {{ goal.name }},
-          {{ percentComplete.toFixed(1) }}% complete
-          <!-- {{ goal.currentAmount / goal.targetAmount * 100 }} % complete -->
+          <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
+          {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% complete
         </li>
       </ul>
   
