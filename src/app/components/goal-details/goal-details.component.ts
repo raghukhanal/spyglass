@@ -94,7 +94,7 @@ export class GoalDetailsComponent implements OnInit {
           console.log(error);
         });
   }
-
+//REPLICATE THIS STUFF
   makeDefaultPayment(){
     this.currentGoal.currentAmount += this.recommendedAmountPerMonth;
     this.updateGoal();
@@ -104,7 +104,7 @@ export class GoalDetailsComponent implements OnInit {
     this.currentGoal.currentAmount += this.customAmount;
     this.updateGoal();
   }
-
+//-----------------
   deleteGoal() {
     this.goalService.delete(this.currentGoal.id)
       .subscribe(

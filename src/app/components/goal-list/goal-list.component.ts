@@ -52,7 +52,17 @@ export class GoalListComponent implements OnInit {
           console.log(error);
         });
   }
-
+  deleteGoal() {
+    this.goalService.delete(this.currentGoal.id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/goals']);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 
 
 // ******************************* TO DO: ****************************************** //
