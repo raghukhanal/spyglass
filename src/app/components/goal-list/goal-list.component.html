@@ -49,10 +49,10 @@
           <p>${{recommendedAmountPerMonth.toFixed(2)}}</p> 
         </div>
 
-        <img class="img-responsive" src="assets/images/vacation.jpg">
-
-        <!-- <img src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}'> -->
-
+        <div>
+        <img class="img-responsive" src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}' width="70%">
+        </div>
+        
         <div>
             <label><strong>Percent progress:</strong></label>
             <mat-progress-bar mode="determinate" value="{{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }}"></mat-progress-bar>

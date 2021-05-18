@@ -68,6 +68,14 @@
           name="currentAmount"
         />
       </div>
+      <div>
+      <label for="theme">Select a goal theme:</label><br>
+      <mat-radio-group aria-label="Select an option" id="theme" name="theme" [(ngModel)]="goal.theme">
+        <mat-radio-button value="vacation" id="vacation" name="vacation">  Vacation  </mat-radio-button>
+        <mat-radio-button value="emergency" id="emergency" name="emergency"> Emergency  </mat-radio-button>
+        <mat-radio-button value="retirement" id="retirement" name="retirement"> Retirement  </mat-radio-button>
+      </mat-radio-group>
+      </div>
       <br>
       <button id="submitButton" (click)="saveGoal()" class="btn btn-success">Add Goal</button>
     </div>
