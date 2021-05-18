@@ -15,7 +15,8 @@ export class GoalDetailsComponent implements OnInit {
     description: '',
     targetAmount: 0,
     targetDate: new Date(),
-    currentAmount: 0
+    currentAmount: 0,
+    theme: ''
   };
   message = '';
   totalMonthsLeft = 0;

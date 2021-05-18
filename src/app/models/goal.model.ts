@@ -5,4 +5,5 @@ export class Goal {
     targetAmount?: number;
     targetDate?: Date;
     currentAmount?: number;
+    theme?: string;
   }

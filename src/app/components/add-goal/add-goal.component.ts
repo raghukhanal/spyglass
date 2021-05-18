@@ -14,7 +14,8 @@ export class AddGoalComponent implements OnInit {
     description: '',
     targetAmount: null,
     targetDate: null,
-    currentAmount: null
+    currentAmount: null,
+    theme: ''
   };
   submitted = false;
 
@@ -29,7 +30,8 @@ export class AddGoalComponent implements OnInit {
       description: this.goal.description,
       targetAmount: this.goal.targetAmount,
       targetDate: this.goal.targetDate,
-      currentAmount: this.goal.currentAmount //???
+      currentAmount: this.goal.currentAmount,
+      theme: this.goal.theme
     };
 
     this.goalService.create(data).subscribe(
@@ -50,7 +52,8 @@ export class AddGoalComponent implements OnInit {
       description: '',
       targetAmount: 0,
       targetDate: null,
-      currentAmount: 0
+      currentAmount: 0,
+      theme: ''
     }
   }
 }

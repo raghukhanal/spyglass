@@ -11,10 +11,8 @@
           (click)="setActiveGoal(goal, i)"
         >
           {{ goal.name }},
-          <!-- {{ percentComplete.toFixed(1) }}% complete -->
-
-          <!-- {{  }} -->
-          {{ goal.currentAmount / goal.targetAmount * 100 }} % complete
+          <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
+          {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% complete
         </li>
       </ul>
   
@@ -44,22 +42,23 @@
           <label><strong>Money Saved:</strong></label>
           ${{ currentGoal.currentAmount }}
         </div>
+        
+        
         <div>
-          <!-- <label><strong>Recommended Monthly Amount:</strong></label>
-           targetAmount/#ofMonthsLeft -->
-          <!-- <p>${{recommendedAmountPerMonth}}</p>  --> 
-
-
-          <label for="recommendedAmountPerMonth">Recommended Monthly Payment: </label>
+          <label for="recommendedAmountPerMonth"><strong>Recommended Monthly Payment: </strong></label>
           <p>${{recommendedAmountPerMonth.toFixed(2)}}</p> 
-
-
         </div>
+
+        <div>
+        <img class="img-responsive" src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}' width="70%">
+        </div>
+        
         <div>
             <label><strong>Percent progress:</strong></label>
             <mat-progress-bar mode="determinate" value="{{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }}"></mat-progress-bar>
-            
+        
           </div>
+    
           <!--
         <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
           Edit
