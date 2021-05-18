@@ -23,14 +23,22 @@
       </div>
     
       <div class="form-group">
-        <label for="targetDate1">Due by:  </label>
-        <input
+        <label for="targetDate">Due by:  </label>
+     <!-- <input
           type="text"
           class="form-control"
           id="targetDate"
           [(ngModel)]="currentGoal.targetDate"
           name="targetDate"
-        /> 
+        /> -->
+      <!-- DATEPICKER -->
+        <mat-form-field class="example-full-width">
+          <input matInput [min]="minDate" id="targetDate" name="targetDate" [(ngModel)]="currentGoal.targetDate" [matDatepicker]="picker" placeholder="">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </div>
 
         <div class="form-group">

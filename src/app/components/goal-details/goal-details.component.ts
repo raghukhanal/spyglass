@@ -21,12 +21,16 @@ export class GoalDetailsComponent implements OnInit {
   message = '';
   totalMonthsLeft = 0;
   recommendedAmountPerMonth = 0;
+  minDate: Date; //mindate value for the form
   
   constructor(
     private goalService: GoalService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) { 
+    //make the min date the current date
+    this.minDate = new Date();
+  }
 
 
   ngOnInit() {
