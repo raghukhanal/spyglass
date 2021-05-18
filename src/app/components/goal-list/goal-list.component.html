@@ -1,9 +1,9 @@
 
-<div class="list row">
+
+  <div class="list row">
     
     <div class="col-md-6">
-      <h1>Goals List</h1>
-      
+      <h4>Goals List</h4>
       <ul class="list-group">
         <li
           class="list-group-item"
@@ -11,35 +11,9 @@
           [class.active]="i == currentIndex"
           (click)="setActiveGoal(goal, i)"
         >
-
-
-        <div>
-          <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>{{ goal.name }}</mat-card-title>
-              <mat-card-subtitle>{{ goal.targetDate }}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src='{{ "assets/images/" + goal.theme + ".jpg" }}' alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                {{ goal.description }}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
-                Saved up {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% of the cost
-             
-            </mat-card-actions>
-          </mat-card>
-          
-        </div>
-
-
-
-
-
-          
-          
+          {{ goal.name }}
+          <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
+          {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% saved
         </li>
       </ul>
   
@@ -76,10 +50,10 @@
           <p>${{recommendedAmountPerMonth.toFixed(2)}}</p> 
         </div>
 
-        <div>
-        <img class="img-responsive" src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}' width="70%">
-        </div>
-        
+        <img class="img-responsive" src="assets/images/vacation.jpg">
+
+        <!-- <img src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}'> -->
+
         <div>
             <label><strong>Percent progress:</strong></label>
             <mat-progress-bar mode="determinate" value="{{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }}"></mat-progress-bar>
