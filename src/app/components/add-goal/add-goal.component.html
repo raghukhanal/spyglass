@@ -22,18 +22,25 @@
           name="description"
         />
       </div>
+      
+  
       <div class="form-group">
         <label for="targetAmount">Target Amount</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           id="targetAmount"
           required
           value=""
           [(ngModel)]="goal.targetAmount"
           name="targetAmount"
+
         />
       </div>
+      <div *ngIf="goal.targetAmount < 0">
+          <p style="color: red">Cannot have a negative target amount! </p>
+      </div>
+      
 
       <!-- We are here -->
       <div class="form-group">
@@ -59,7 +66,7 @@
       <div class="form-group">
         <label for="currentAmount">$ Saved So Far</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           id="currentAmount"
           required
@@ -67,12 +74,19 @@
           name="currentAmount"
         />
       </div>
+      <div *ngIf="goal.currentAmount < 0">
+        <p style="color: red">Don't break the piggy bank! Saved so far cannot be negative. </p>
+    </div>
       <div>
       <label for="theme">Select a goal theme:</label><br>
       <mat-radio-group aria-label="Select an option" id="theme" name="theme" [(ngModel)]="goal.theme">
         <mat-radio-button value="vacation" id="vacation" name="vacation">  Vacation  </mat-radio-button>
+        <br>
         <mat-radio-button value="emergency" id="emergency" name="emergency"> Emergency  </mat-radio-button>
+        <br>
         <mat-radio-button value="retirement" id="retirement" name="retirement"> Retirement  </mat-radio-button>
+        <br>
+        <mat-radio-button value="investment" id="investment" name="investement"> Investment  </mat-radio-button>
       </mat-radio-group>
       </div>
       <br>
