@@ -1,5 +1,5 @@
 <div *ngIf="currentGoal" class="edit-form">
-    <h4>Goal Details</h4>
+    <h4>Edit Goal Details or Make a Payment</h4>
     <form>
       <div class="form-group">
         <label for="name">Name</label>
@@ -21,27 +21,7 @@
           name="description"
         />
       </div>
-      <!-- <div class="form-group">
-        <label for="description">Description</label>
-        <input
-          type="text"
-          class="form-control"
-          id="description"
-          [(ngModel)]="currentGoal.description"
-          name="description"
-        />
-      </div> -->
-      <div class="form-group">
-        <label for="targetAmount">Total Cost: $</label>
-        <input
-          type="text"
-          class="form-control"
-          id="targetAmount"
-          [(ngModel)]="currentGoal.targetAmount"
-          name="targetAmount"
-        />
-      </div>
-      <!-- ********************************** -->
+    
       <div class="form-group">
         <label for="targetDate1">Due by:  </label>
         <input
@@ -51,25 +31,19 @@
           [(ngModel)]="currentGoal.targetDate"
           name="targetDate"
         /> 
-        <!-- <mat-datepicker></mat-datepicker>
+        </div>
 
-
-
-        <!-- <mat-form-field class="example-full-width">
-          <input matInput  id="targetDate" name="targetDate" [(ngModel)]="currentGoal.targetDate" [matDatepicker]="picker" placeholder="">
-
-          <mat-datepicker-toggle matSuffix [for]="picker">
-            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-          </mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field> -->
-
-
-
-
-
-        <!-- **************************************************************** -->
+        <div class="form-group">
+          <label for="targetAmount">Target Amount:  </label>
+          <input
+            type="text"
+            class="form-control"
+            id="targetAmount"
+            [(ngModel)]="currentGoal.targetAmount"
+            name="targetAmount"
+          /> 
       </div>
+
       <div class="form-group">
         <label for="currentAmount">Money Saved: </label>
         <input
@@ -83,7 +57,7 @@
 
       
       <div>
-        <label for="theme">Select a goal theme:</label><br>
+        <label for="theme">Goal theme:</label><br>
         <mat-radio-group aria-label="Select an option" id="theme" name="theme" [(ngModel)]="currentGoal.theme">
           <mat-radio-button value="vacation" id="vacation" >  Vacation  </mat-radio-button>
           <mat-radio-button value="emergency" id="emergency" name="emergency"> Emergency  </mat-radio-button>
@@ -95,11 +69,16 @@
         <label for="recommendedAmountPerMonth">Recommended Monthly Payment: </label>
         <p >${{recommendedAmountPerMonth.toFixed(2)}}</p> 
       </div>
-    
+
     </form>
     
+
+  <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
+    Deposit recommended monthly amount
+  </button>
+
   <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
-      Update/Make Payment
+    Update
   </button>
 
   <button class="m-3 btn btn-sm btn-danger" (click)="deleteGoal()">
