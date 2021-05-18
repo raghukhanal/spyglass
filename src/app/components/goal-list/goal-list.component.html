@@ -1,80 +1,78 @@
-
-
-  <div class="list row">
+<div class="list row">
     
-    <div class="col-md-6">
-      <h4>Goals List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let goal of goals; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveGoal(goal, i)"
-        >
-          {{ goal.name }}
-          <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
-          {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% saved
-        </li>
-      </ul>
+  <div class="col-md-6">
+    <h4>Goals List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let goal of goals; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveGoal(goal, i)"
+      >
+        {{ goal.name }},
+        <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
+        {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% complete
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllGoals()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentGoal">
+      <h4>Details</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentGoal.name }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentGoal.description }}
+      </div>
+      <div>
+        <label><strong>Target Date:</strong></label>
+        {{ currentGoal.targetDate }}
+      </div>
+      <div>
+        <label><strong>Cost:</strong></label>
+        ${{ currentGoal.targetAmount }}
+      </div>
+      <div>
+        <label><strong>Money Saved:</strong></label>
+        ${{ (currentGoal.currentAmount).toFixed(2) }}
+      </div>
+      
+      
+      <div>
+        <label for="recommendedAmountPerMonth"><strong>Recommended Monthly Payment: </strong></label>
+        <p>${{recommendedAmountPerMonth.toFixed(2)}}</p> 
+      </div>
+
+      <div>
+      <img class="img-responsive" src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}' width="70%">
+      </div>
+      
+      <div>
+          <label><strong>Percent progress:</strong></label>
+          <mat-progress-bar mode="determinate" value="{{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }}"></mat-progress-bar>
+      
+        </div>
   
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllGoals()">
-        Remove All
+        <!--
+      <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
+        Edit
+      </a>
+    -->
+      <button class="m-3 btn btn-sm btn-secondary" >
+        <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
+          Make Payment / Edit Goal
+        </a>
       </button>
     </div>
-    <div class="col-md-6">
-      <div *ngIf="currentGoal">
-        <h4>Details</h4>
-        <div>
-          <label><strong>Name:</strong></label> {{ currentGoal.name }}
-        </div>
-        <div>
-          <label><strong>Description:</strong></label>
-          {{ currentGoal.description }}
-        </div>
-        <div>
-          <label><strong>Target Date:</strong></label>
-          {{ currentGoal.targetDate }}
-        </div>
-        <div>
-          <label><strong>Cost:</strong></label>
-          ${{ currentGoal.targetAmount }}
-        </div>
-        <div>
-          <label><strong>Money Saved:</strong></label>
-          ${{ currentGoal.currentAmount }}
-        </div>
-        
-        
-        <div>
-          <label for="recommendedAmountPerMonth"><strong>Recommended Monthly Payment: </strong></label>
-          <p>${{recommendedAmountPerMonth.toFixed(2)}}</p> 
-        </div>
 
-        <img class="img-responsive" src="assets/images/vacation.jpg">
-
-        <!-- <img src='{{ "assets/images/" + currentGoal.theme + ".jpg" }}'> -->
-
-        <div>
-            <label><strong>Percent progress:</strong></label>
-            <mat-progress-bar mode="determinate" value="{{ currentGoal.currentAmount / currentGoal.targetAmount * 100 }}"></mat-progress-bar>
-        
-          </div>
-    
-          <!--
-        <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
-          Edit
-        </a>
-      -->
-        <button class="m-3 btn btn-sm btn-secondary" >
-          <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
-            Make Payment / Edit Goal
-          </a>
-        </button>
-      </div>
-  
-      <div *ngIf="!currentGoal">
-        <br />
-        <p>Please click on a goal...</p>
-      </div>
+    <div *ngIf="!currentGoal">
+      <br />
+      <p>Please click on a goal...</p>
     </div>
   </div>
+</div>

@@ -3,13 +3,4 @@
     max-width: 750px;
     margin: auto;
   }
-  #goal-card {
-    display: flex;
-    column-count: auto;
-    /* width: 20%; */
-  }
-
-  div > li {
-    width: 50%;
-    height: 10%;
-  }
+  
