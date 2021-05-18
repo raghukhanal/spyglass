@@ -10,6 +10,7 @@
           [(ngModel)]="currentGoal.name"
           name="name"
         />
+        
       </div>
       <div class="form-group">
         <label for="description">Description</label>
@@ -24,22 +25,23 @@
     
       <div class="form-group">
         <label for="targetDate">Due by:  </label>
-     <!-- <input
+     <input
           type="text"
           class="form-control"
           id="targetDate"
           [(ngModel)]="currentGoal.targetDate"
           name="targetDate"
-        /> -->
+      />
+     </div>
       <!-- DATEPICKER -->
-        <mat-form-field class="example-full-width">
+        <!-- <mat-form-field class="example-full-width">
           <input matInput [min]="minDate" id="targetDate" name="targetDate" [(ngModel)]="currentGoal.targetDate" [matDatepicker]="picker" placeholder="">
           <mat-datepicker-toggle matSuffix [for]="picker">
             <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
           </mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-        </div>
+        </div> -->
 
         <div class="form-group">
           <label for="targetAmount">Target Amount:  </label>
