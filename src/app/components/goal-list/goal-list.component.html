@@ -2,7 +2,8 @@
 <div class="list row">
     
     <div class="col-md-6">
-      <h4>Goals List</h4>
+      <h1>Goals List</h1>
+      
       <ul class="list-group">
         <li
           class="list-group-item"
@@ -10,9 +11,35 @@
           [class.active]="i == currentIndex"
           (click)="setActiveGoal(goal, i)"
         >
-          {{ goal.name }},
-          <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
-          {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% complete
+
+
+        <div>
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{ goal.name }}</mat-card-title>
+              <mat-card-subtitle>{{ goal.targetDate }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src='{{ "assets/images/" + goal.theme + ".jpg" }}' alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{ goal.description }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <mat-progress-bar mode="determinate" value="{{ goal.currentAmount / goal.targetAmount * 100 }}"></mat-progress-bar>
+                Saved up {{ (goal.currentAmount / goal.targetAmount * 100).toFixed(0) }}% of the cost
+             
+            </mat-card-actions>
+          </mat-card>
+          
+        </div>
+
+
+
+
+
+          
+          
         </li>
       </ul>
   
