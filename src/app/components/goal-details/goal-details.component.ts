@@ -37,9 +37,8 @@ export class GoalDetailsComponent implements OnInit {
   ngOnInit() {
     this.message = '';
     this.getGoal(this.route.snapshot.params.id);
-    this.recommendedMonthlyPayment();
+    //this.recommendedMonthlyPayment();
   }
-
   getGoal(id) {
     this.goalService.get(id)
       .subscribe(
@@ -52,37 +51,37 @@ export class GoalDetailsComponent implements OnInit {
         });
   }
 
-  recommendedMonthlyPayment() {
-    //totalAmount - currentAmount / totalMonthsLeft
-    this.goalService.get(this.route.snapshot.params.id)
-      .subscribe(
-        data => {
-          this.currentGoal = data;
-          console.log(data);
-          var now = new Date();
-          var target = new Date(data.targetDate);
-          var yearsLeftWithMonth = (target.getFullYear() - now.getFullYear()) * 12;
-          var monthsLeft = target.getMonth() - now.getMonth();
-          this.totalMonthsLeft = monthsLeft + yearsLeftWithMonth;
-          console.log("Months left: "+ this.totalMonthsLeft);
+  // recommendedMonthlyPayment() {
+  //   //totalAmount - currentAmount / totalMonthsLeft
+  //   this.goalService.get(this.route.snapshot.params.id)
+  //     .subscribe(
+  //       data => {
+  //         this.currentGoal = data;
+  //         console.log(data);
+  //         var now = new Date();
+  //         var target = new Date(data.targetDate);
+  //         var yearsLeftWithMonth = (target.getFullYear() - now.getFullYear()) * 12;
+  //         var monthsLeft = target.getMonth() - now.getMonth();
+  //         this.totalMonthsLeft = monthsLeft + yearsLeftWithMonth;
+  //         console.log("Months left: "+ this.totalMonthsLeft);
           
-          if(this.totalMonthsLeft == 0) {
-            this.recommendedAmountPerMonth = data.targetAmount - data.currentAmount;
-          } else if(this.totalMonthsLeft < 0) {
-            this.recommendedAmountPerMonth = 0;
-            this.message="Past due date";
-          } else {
-            this.recommendedAmountPerMonth = (data.targetAmount - data.currentAmount)/this.totalMonthsLeft;
-          }
+  //         if(this.totalMonthsLeft == 0) {
+  //           this.recommendedAmountPerMonth = data.targetAmount - data.currentAmount;
+  //         } else if(this.totalMonthsLeft < 0) {
+  //           this.recommendedAmountPerMonth = 0;
+  //           this.message="Past due date";
+  //         } else {
+  //           this.recommendedAmountPerMonth = (data.targetAmount - data.currentAmount)/this.totalMonthsLeft;
+  //         }
          
 
-          console.log("$$$$: "+ this.recommendedAmountPerMonth);
-        },
-        error => {
-          console.log(error);
-        });
+  //         console.log("$$$$: "+ this.recommendedAmountPerMonth);
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       });
   
-  }
+  // }
   updateGoal() {
     this.goalService.update(this.currentGoal.id, this.currentGoal)
       .subscribe(
@@ -94,17 +93,6 @@ export class GoalDetailsComponent implements OnInit {
           console.log(error);
         });
   }
-//REPLICATE THIS STUFF
-  makeDefaultPayment(){
-    this.currentGoal.currentAmount += this.recommendedAmountPerMonth;
-    this.updateGoal();
-  }
-
-  makeCustomPayment(){
-    this.currentGoal.currentAmount += this.customAmount;
-    this.updateGoal();
-  }
-//-----------------
   deleteGoal() {
     this.goalService.delete(this.currentGoal.id)
       .subscribe(

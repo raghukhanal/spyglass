@@ -91,7 +91,7 @@ recommendedMonthlyPayment(id) {
         }
        
 
-        console.log("$$$$: "+ this.recommendedAmountPerMonth);
+      //  console.log("$$$$: "+ this.recommendedAmountPerMonth);
       },
       error => {
         console.log(error);

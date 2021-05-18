@@ -1,9 +1,13 @@
-<p>deposit works!</p>
+<h3>Recommended Monthly Payment</h3>
+<p><strong>${{recommendedAmountPerMonth.toFixed(2)}}</strong></p>
 <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
     Deposit recommended monthly amount
 </button><br>
-
 <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" >
 Deposit custom amount:
 </button>
 <input type="number" id="customAmount" name="customAmount"   [(ngModel)]="customAmount"/><br>
+<div *ngIf="submitted">
+    <h4>Deposit successful!</h4>
+    <button class="btn btn-success" ><a style="text-decoration: none; color: white; " href="/goals">Back to goals</a></button>
+</div>
