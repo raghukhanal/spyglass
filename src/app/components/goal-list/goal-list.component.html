@@ -16,15 +16,15 @@
     </ul>
 
     <button class="m-3 btn btn-sm btn-danger" (click)="removeAllGoals()">
-      Remove All
+      Delete all goals
     </button>
   </div>
   <div class="col-md-6">
     <div *ngIf="currentGoal">
-      <h4>Details</h4>
-      <div>
-        <label><strong>Name:</strong></label> {{ currentGoal.name }}
-      </div>
+      <h4><strong>{{ currentGoal.name }}</strong></h4>
+      <!-- <div>
+        <label><strong>Goal:</strong></label> 
+      </div> -->
       <div>
         <label><strong>Description:</strong></label>
         {{ currentGoal.description }}

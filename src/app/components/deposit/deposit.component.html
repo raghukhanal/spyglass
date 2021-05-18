@@ -1,5 +1,5 @@
 <h3>Recommended Monthly Payment</h3>
-<p><strong>${{recommendedAmountPerMonth.toFixed(2)}}</strong></p>
+<p ><strong [(ngModel)]="recommendedAmountPerMonth" id="recommendedAmountPerMonth" name="recommendedAmountPerMonth" >${{recommendedAmountPerMonth.toFixed(2)}}</strong></p>
 <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
     Deposit recommended monthly amount
 </button><br>
