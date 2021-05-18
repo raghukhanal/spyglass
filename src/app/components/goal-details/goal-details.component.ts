@@ -22,6 +22,7 @@ export class GoalDetailsComponent implements OnInit {
   totalMonthsLeft = 0;
   recommendedAmountPerMonth = 0;
   minDate: Date; //mindate value for the form
+  customAmount = 0;
   
   constructor(
     private goalService: GoalService,
@@ -96,6 +97,11 @@ export class GoalDetailsComponent implements OnInit {
 
   makeDefaultPayment(){
     this.currentGoal.currentAmount += this.recommendedAmountPerMonth;
+    this.updateGoal();
+  }
+
+  makeCustomPayment(){
+    this.currentGoal.currentAmount += this.customAmount;
     this.updateGoal();
   }
 
