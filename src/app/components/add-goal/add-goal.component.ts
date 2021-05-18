@@ -18,8 +18,12 @@ export class AddGoalComponent implements OnInit {
     theme: ''
   };
   submitted = false;
+  minDate: Date; //add min date for the datepicker in the form
 
-  constructor(private goalService: GoalService) { }
+  constructor(private goalService: GoalService) {
+    //make the min date the current date
+    this.minDate = new Date();
+  }
 
   ngOnInit() {
   }

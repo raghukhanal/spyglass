@@ -48,8 +48,7 @@
         /> -->
 
         <mat-form-field class="example-full-width">
-          <input matInput  id="targetDate" name="targetDate" [(ngModel)]="goal.targetDate" [matDatepicker]="picker" placeholder="">
-
+          <input matInput [min]="minDate" id="targetDate" name="targetDate" [(ngModel)]="goal.targetDate" [matDatepicker]="picker" placeholder="">
           <mat-datepicker-toggle matSuffix [for]="picker">
             <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
           </mat-datepicker-toggle>
