@@ -1,5 +1,5 @@
 <div *ngIf="currentGoal" class="edit-form">
-    <h4>Edit Goal Details or Make a Payment</h4>
+    <h4>Edit Goal Details</h4>
     <form>
       <div class="form-group">
         <label for="name">Name</label>
@@ -73,12 +73,14 @@
           <mat-radio-button value="emergency" id="emergency" name="emergency"> Emergency  </mat-radio-button>
           <mat-radio-button value="retirement" id="retirement" name="retirement"> Retirement  </mat-radio-button>
         </mat-radio-group>
-        </div>
+      </div>
+      <br><br>
       
       <div class="form-group">
         <label for="recommendedAmountPerMonth">Recommended Monthly Payment: </label>
         <p >${{recommendedAmountPerMonth.toFixed(2)}}</p> 
       </div>
+     
 
 
     </form>
