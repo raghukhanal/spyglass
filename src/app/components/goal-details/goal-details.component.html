@@ -80,12 +80,24 @@
         <p >${{recommendedAmountPerMonth.toFixed(2)}}</p> 
       </div>
 
+
     </form>
     
-
+<!--
   <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
     Deposit recommended monthly amount
   </button>
+
+
+  
+  <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" >
+    Deposit custom amount:
+  </button>
+  <input type="number" id="customAmount" name="customAmount"   [(ngModel)]="customAmount"/><br>
+  
+  
+
+<app-deposit></app-deposit>-->
 
   <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
     Update

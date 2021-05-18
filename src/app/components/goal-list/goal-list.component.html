@@ -63,9 +63,19 @@
         Edit
       </a>
     -->
-      <button class="m-3 btn btn-sm btn-secondary" >
+      <button class="m-3 btn btn-sm btn-primary" >
+        <a class="badge badge-warning" href="/goals/{{currentGoal.id}}/deposit">
+          Deposit
+        </a>
+      </button>  
+      <button class="m-3 btn btn-sm btn-warning" >
         <a class="badge badge-warning" href="/goals/{{ currentGoal.id }}">
-          Make Payment / Edit Goal
+          Edit Goal
+        </a>
+      </button>
+      <button class="m-3 btn btn-sm btn-danger" (click)="deleteGoal()">
+        <a class="badge badge-warning" href="/goals">
+          Delete
         </a>
       </button>
     </div>

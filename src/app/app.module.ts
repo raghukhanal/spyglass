@@ -10,13 +10,15 @@ import { GoalDetailsComponent } from './components/goal-details/goal-details.com
 import { GoalListComponent } from './components/goal-list/goal-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
+import { DepositComponent } from './components/deposit/deposit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddGoalComponent,
     GoalDetailsComponent,
-    GoalListComponent
+    GoalListComponent,
+    DepositComponent
   ],
   imports: [
     BrowserModule,
