@@ -1,13 +1,38 @@
-<h3>Recommended Monthly Payment</h3>
-<p ><strong [(ngModel)]="recommendedAmountPerMonth" id="recommendedAmountPerMonth" name="recommendedAmountPerMonth" >${{recommendedAmountPerMonth.toFixed(2)}}</strong></p>
-<button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
-    Deposit recommended monthly amount
-</button><br>
-<button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" >
-Deposit custom amount:
-</button>
-<input type="number" id="customAmount" name="customAmount"   [(ngModel)]="customAmount"/><br>
-<div *ngIf="submitted">
-    <h4>Deposit successful!</h4>
-    <button class="btn btn-success" ><a style="text-decoration: none; color: white; " href="/goals">Back to goals</a></button>
+
+<div>
+
+    <div id="target">
+        <h3>
+            Target Amount:
+        </h3>
+        <p>
+           <b> ${{currentGoal.targetAmount}} </b>
+        </p>
+    </div>
+
+    
+    <h3>Recommended Monthly Deposit</h3>
+    <p>
+        <strong [(ngModel)]="recommendedAmountPerMonth" id="recommendedAmountPerMonth" name="recommendedAmountPerMonth" >${{recommendedAmountPerMonth.toFixed(2)}}</strong>
+    </p>
+    <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
+        Make recommended deposit
+    </button><br>
+
+    
+
+    $<input type="number" id="customAmount" name="customAmount"   [(ngModel)]="customAmount"/><button type="submit" class="m-3 btn btn-sm btn-success" (click)="makeCustomPayment()" >
+        Make custom deposit
+        </button>
+    <div *ngIf="(customAmount > 0 && submitted) || recommendedAmountSubmitted ">
+        <h4 style="color: green;">Deposit successful!</h4>
+        <button class="btn btn-success" ><a style="text-decoration: none; color: white; " href="/goals">Back to goals</a></button>
+    </div>
+
+    <div *ngIf="customAmount < 0">
+        <p style="color: red">Don't break the piggy bank! Saved so far cannot be negative. </p>
+    </div>
+    <div *ngIf="customAmount == 0 && zeroDeposited">
+        <p style="color: red">Deposit amount must be greater than $0</p>
+    </div>
 </div>

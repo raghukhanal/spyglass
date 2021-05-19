@@ -120,7 +120,7 @@
   </button>
 
 
-    <p style="color: red;">{{ message }}</p>
+    <p *ngIf="currentGoal.submitted" style="color: red;">{{ message }}</p>
   </div>
   
   <div *ngIf="!currentGoal">

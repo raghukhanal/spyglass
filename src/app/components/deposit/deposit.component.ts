@@ -22,10 +22,13 @@ export class DepositComponent implements OnInit {
     theme: ''
   };
   submitted = false;
+  zeroDeposited = false;
+  recommendedAmountSubmitted = false;
   message = '';
   totalMonthsLeft = 0;
   recommendedAmountPerMonth = 0;
   customAmount = 0;
+
 
   constructor(
     private goalService: GoalService,
@@ -41,13 +44,18 @@ export class DepositComponent implements OnInit {
    makeDefaultPayment(){
     this.currentGoal.currentAmount += this.recommendedAmountPerMonth;
     this.updateGoal();
-    this.submitted=true;
+    this.recommendedAmountSubmitted=true;
   }
 
   makeCustomPayment(){
     this.currentGoal.currentAmount += this.customAmount;
-    this.updateGoal();
-    this.submitted=true;
+    if(this.customAmount > 0) {
+      this.updateGoal();
+      this.submitted=true;
+    }
+    if(this.customAmount == 0) {
+      this.zeroDeposited = true;
+    }
   }
   recommendedMonthlyPayment() {
    // console.log(id);

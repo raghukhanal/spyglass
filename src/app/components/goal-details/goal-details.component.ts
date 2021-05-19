@@ -23,6 +23,8 @@ export class GoalDetailsComponent implements OnInit {
   recommendedAmountPerMonth = 0;
   minDate: Date; //mindate value for the form
   customAmount = 0;
+  isDisabled = false;
+  successMessage = '';
   
   constructor(
     private goalService: GoalService,
@@ -83,7 +85,13 @@ export class GoalDetailsComponent implements OnInit {
   
   }
   updateGoal() {
-    this.goalService.update(this.currentGoal.id, this.currentGoal)
+
+    if(this.currentGoal.currentAmount < 0 || this.currentGoal.targetAmount <= 0) {
+      this.isDisabled = true;
+      this.message = "Target amount must be greater than 0";
+    }
+    else {
+      this.goalService.update(this.currentGoal.id, this.currentGoal)
       .subscribe(
         response => {
           console.log(response);
@@ -92,6 +100,9 @@ export class GoalDetailsComponent implements OnInit {
         error => {
           console.log(error);
         });
+      
+    }
+   
   }
   deleteGoal() {
     this.goalService.delete(this.currentGoal.id)
