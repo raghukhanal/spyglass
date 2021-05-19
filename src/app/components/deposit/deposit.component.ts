@@ -22,6 +22,7 @@ export class DepositComponent implements OnInit {
     theme: ''
   };
   submitted = false;
+  zeroDeposited = false;
   message = '';
   totalMonthsLeft = 0;
   recommendedAmountPerMonth = 0;
@@ -46,8 +47,13 @@ export class DepositComponent implements OnInit {
 
   makeCustomPayment(){
     this.currentGoal.currentAmount += this.customAmount;
-    this.updateGoal();
-    this.submitted=true;
+    if(this.customAmount > 0) {
+      this.updateGoal();
+      this.submitted=true;
+    }
+    if(this.customAmount == 0) {
+      this.zeroDeposited = true;
+    }
   }
   recommendedMonthlyPayment() {
    // console.log(id);
