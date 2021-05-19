@@ -1,5 +1,5 @@
 <div *ngIf="currentGoal" class="edit-form">
-    <h4>Edit Goal Details</h4>
+    <h4><b>Edit Goal Details</b></h4>
     <form>
       <div class="form-group">
         <label for="name">Name</label>
@@ -111,7 +111,9 @@
 
 <app-deposit></app-deposit>-->
 
-  <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
+<p style="color: green;">{{ message }}</p>
+  <button type="submit" [disabled]="currentGoal.name === '' || currentGoal.targetAmount <= 0 || currentGoal.currentAmount <= 0 ||
+  currentGoal.targetDate === ''"  class="m-3 btn btn-sm btn-primary" (click)="updateGoal()">
     Update
   </button>
 
@@ -120,7 +122,7 @@
   </button>
 
 
-    <p style="color: red;">{{ message }}</p>
+  
   </div>
   
   <div *ngIf="!currentGoal">
