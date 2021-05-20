@@ -41,7 +41,6 @@
           <p style="color: red">Cannot have a negative target amount! </p>
       </div>
       
-
       <!-- We are here -->
       <div class="form-group">
         <label for="targetDate">Target Date</label>
@@ -93,6 +92,17 @@
       </mat-radio-group>
       </div>
       <br>
+
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Theme</mat-label>
+        <mat-select [(ngModel)]="goal.theme">
+          <mat-option *ngFor="let theme of themes" [value]="theme.picture">
+            <img width="50" height="50" src={{theme.picture}} > 
+            <span style="margin-left: 30px;">{{theme.value}}</span> 
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+  
       
 <p style="color: green;">{{ message }}</p>
 <button id="submitButton" type="submit" [disabled]="goal.name === '' || goal.targetAmount <= 0 || goal.currentAmount <= 0 ||
@@ -107,4 +117,10 @@ goal.targetDate === ''"  class="m-3 btn btn-sm btn-success" (click)="saveGoal()"
       <button class="btn btn-primary" (click)="newGoal()">New Goal</button> &nbsp;&nbsp;&nbsp;
       <button class="btn btn-success" ><a style="text-decoration: none; color: white; " href="/goals">Back to goals</a></button>
     </div>
+
+
+    
+
+    
+   
   </div>

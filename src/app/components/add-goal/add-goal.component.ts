@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Goal } from 'src/app/models/goal.model';
 import { GoalService } from 'src/app/services/goal.service';
+import { PictureService } from 'src/app/services/picture.service';
+
+// interface Theme {
+//   value: string,
+//   picture?: string
+// }
 
 @Component({
   selector: 'app-add-goal',
@@ -9,6 +15,9 @@ import { GoalService } from 'src/app/services/goal.service';
 })
 export class AddGoalComponent implements OnInit {
 //TODO: make a model file for goals
+
+  // themes: Theme[];
+
   goal: Goal = {
     name: '',
     description: '',
@@ -20,12 +29,15 @@ export class AddGoalComponent implements OnInit {
   submitted = false;
   minDate: Date; //add min date for the datepicker in the form
 
-  constructor(private goalService: GoalService) {
+  constructor(private goalService: GoalService,
+    private pictureService: PictureService) {
     //make the min date the current date
     this.minDate = new Date();
   }
 
   ngOnInit() {
+    // this.themes = this.pictureService.getAllPictures();
+    // console.log(this.themes);
   }
 
   saveGoal(): void {

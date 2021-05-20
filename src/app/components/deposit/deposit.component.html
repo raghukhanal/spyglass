@@ -5,7 +5,7 @@
 <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
     Deposit recommended monthly amount
 </button><br>
-<button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" >
+<button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" [disabled]="customAmount > 0" >
 Deposit custom amount:
 </button>
 <input type="number" id="customAmount" name="customAmount" [(ngModel)]="customAmount"/><br>
