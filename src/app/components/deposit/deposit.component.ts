@@ -23,6 +23,7 @@ export class DepositComponent implements OnInit {
   };
   submitted = false;
   zeroDeposited = false;
+  recommendedSubmitted = false;
   message = '';
   totalMonthsLeft = 0;
   recommendedAmountPerMonth = 0;
@@ -37,15 +38,18 @@ export class DepositComponent implements OnInit {
   ngOnInit(): void {
     this.getGoal(this.route.snapshot.params.id);
     this.recommendedMonthlyPayment();
+    this.updateGoal();
   }
  
    makeDefaultPayment(){
+     this.submitted = false;
     this.currentGoal.currentAmount += this.recommendedAmountPerMonth;
     this.updateGoal();
-    this.submitted=true;
+    this.recommendedSubmitted=true;
   }
 
   makeCustomPayment(){
+    this.recommendedSubmitted=false;
     this.currentGoal.currentAmount += this.customAmount;
     if(this.customAmount > 0) {
       this.updateGoal();

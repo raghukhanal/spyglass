@@ -1,16 +1,23 @@
 <h3>Target Goal</h3>
-<p><strong [(ngModel)]="recommendedAmountPerMonth" id="recommendedAmountPerMonth" name="recommendedAmountPerMonth" >${{currentGoal.targetAmount.toFixed(2)}}</strong></p>
+
+
+<p><strong [(ngModel)]="targetAmount" id="targetAmount" name="targetAmount" >${{currentGoal.targetAmount.toFixed(2)}}</strong></p>
 <h3>Recommended Monthly Payment</h3>
 <p><strong [(ngModel)]="recommendedAmountPerMonth" id="recommendedAmountPerMonth" name="recommendedAmountPerMonth" >${{recommendedAmountPerMonth.toFixed(2)}}</strong></p>
 <button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeDefaultPayment()">
     Deposit recommended monthly amount
 </button><br>
-<button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" [disabled]="customAmount > 0" >
-Deposit custom amount:
+<button type="submit" class="m-3 btn btn-sm btn-primary" (click)="makeCustomPayment()" [disabled]="customAmount <= 0" >
+Deposit custom amount
 </button>
 <input type="number" id="customAmount" name="customAmount" [(ngModel)]="customAmount"/><br>
+
 <div *ngIf="submitted">
-    <h4>Deposit successful!</h4>
+    <h4>Deposit custom amount successfully!</h4>
     <button class="btn btn-success" ><a style="text-decoration: none; color: white; " href="/goals">Back to goals</a></button>
 </div>
 
+<div *ngIf="recommendedSubmitted">
+    <h4>Deposit recommended amount successfully!</h4>
+    <button class="btn btn-success" ><a style="text-decoration: none; color: white; " href="/goals">Back to goals</a></button>
+</div>
