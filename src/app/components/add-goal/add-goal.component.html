@@ -93,7 +93,13 @@
       </mat-radio-group>
       </div>
       <br>
-      <button id="submitButton" (click)="saveGoal()" class="btn btn-success">Add Goal</button>
+      
+<p style="color: green;">{{ message }}</p>
+<button id="submitButton" type="submit" [disabled]="goal.name === '' || goal.targetAmount <= 0 || goal.currentAmount <= 0 ||
+goal.targetDate === ''"  class="m-3 btn btn-sm btn-success" (click)="saveGoal()">
+  Add Goal
+</button>
+    
     </div>
   
     <div *ngIf="submitted">
